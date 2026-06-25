@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'home_screen.dart';
 
 // ─── Palette ────────────────────────────────────────────────────────────────
 const _navy = Color(0xFF0D1B2A);
@@ -82,6 +83,21 @@ class _AuthShellState extends State<_AuthShell>
     _ctrl.reverse().then((_) {
       if (mounted) setState(() => _sheetOpen = false);
     });
+  }
+
+  void _navigateToHome(BuildContext context) {
+    Navigator.of(context).pushReplacement(
+      PageRouteBuilder(
+        pageBuilder: (_, animation, __) => const HomeScreen(),
+        transitionsBuilder: (_, animation, __, child) {
+          return FadeTransition(
+            opacity: CurvedAnimation(parent: animation, curve: Curves.easeIn),
+            child: child,
+          );
+        },
+        transitionDuration: const Duration(milliseconds: 400),
+      ),
+    );
   }
 
   @override
@@ -170,7 +186,10 @@ class _AuthShellState extends State<_AuthShell>
             animation: _ctrl,
             builder: (_, child) =>
                 SlideTransition(position: _sheetSlide, child: child),
-            child: _SignInSheet(onClose: _closeSheet),
+            child: _SignInSheet(
+              onClose: _closeSheet,
+              onSignIn: () => _navigateToHome(context),
+            ),
           ),
         ],
       ),
@@ -182,8 +201,9 @@ class _AuthShellState extends State<_AuthShell>
 //  Bottom sheet — social buttons only
 // ═══════════════════════════════════════════════════════════════════════════
 class _SignInSheet extends StatelessWidget {
-  const _SignInSheet({required this.onClose});
+  const _SignInSheet({required this.onClose, required this.onSignIn});
   final VoidCallback onClose;
+  final VoidCallback onSignIn;
 
   @override
   Widget build(BuildContext context) {
@@ -235,7 +255,7 @@ class _SignInSheet extends StatelessWidget {
                 _SocialButton(
                   label: 'Continue with Google',
                   icon: _GoogleIcon(),
-                  onTap: () {},
+                  onTap: onSignIn,
                 ),
                 const SizedBox(height: 14),
                 _SocialButton(
@@ -245,7 +265,7 @@ class _SignInSheet extends StatelessWidget {
                     color: Color(0xFF1877F2),
                     size: 22,
                   ),
-                  onTap: () {},
+                  onTap: onSignIn,
                 ),
 
                 const SizedBox(height: 20),
