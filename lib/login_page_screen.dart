@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'home_screen.dart';
+import 'interface.dart';
 
 // ─── Palette ────────────────────────────────────────────────────────────────
 const _navy = Color(0xFF0D1B2A);
@@ -88,7 +89,7 @@ class _AuthShellState extends State<_AuthShell>
   void _navigateToHome(BuildContext context) {
     Navigator.of(context).pushReplacement(
       PageRouteBuilder(
-        pageBuilder: (_, animation, __) => const HomeScreen(),
+        pageBuilder: (_, animation, __) => const MainInterface(),
         transitionsBuilder: (_, animation, __, child) {
           return FadeTransition(
             opacity: CurvedAnimation(parent: animation, curve: Curves.easeIn),
