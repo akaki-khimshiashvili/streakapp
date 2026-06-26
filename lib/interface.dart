@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'home_screen.dart'; // Import your home screen file
+import 'home_screen.dart';
+import 'profile_screen.dart';
 
 class MainInterface extends StatefulWidget {
   const MainInterface({super.key});
@@ -27,7 +28,7 @@ class _MainInterfaceState extends State<MainInterface> {
       const HomeScreen(), // Index 0: Renders the isolated activity screen
       _buildPlaceholderTab('Progress Screen'), // Index 1
       _buildPlaceholderTab('Calendar Screen'), // Index 2
-      _buildPlaceholderTab('Profile Screen'), // Index 3
+      const ProfileScreen(), // Index 3
     ];
   }
 

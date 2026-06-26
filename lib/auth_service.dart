@@ -5,10 +5,10 @@ class AuthService {
   static final FirebaseAuth _auth = FirebaseAuth.instance;
   static final GoogleSignIn _googleSignIn = GoogleSignIn();
 
-  static Future<UserCredential?> signInWithGoogle() async {
+  static Future<User?> signInWithGoogle() async {
     final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
 
-    if (googleUser == null) return null; // user cancelled
+    if (googleUser == null) return null;
 
     final GoogleSignInAuthentication googleAuth =
         await googleUser.authentication;
@@ -18,6 +18,12 @@ class AuthService {
       idToken: googleAuth.idToken,
     );
 
-    return await _auth.signInWithCredential(credential);
+    final userCredential = await _auth.signInWithCredential(credential);
+    return userCredential.user;
+  }
+
+  static Future<void> signOut() async {
+    await _googleSignIn.signOut();
+    await _auth.signOut();
   }
 }
