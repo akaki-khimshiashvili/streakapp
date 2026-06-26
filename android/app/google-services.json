@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "71692539830",
+    "project_id": "lumirae-12bc2",
+    "storage_bucket": "lumirae-12bc2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:71692539830:android:7fdbc4fc9ad31eaae35317",
+        "android_client_info": {
+          "package_name": "com.example.streakapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "71692539830-mdrut1gv5dl523tpvaedklchiaaekst0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.streakapp",
+            "certificate_hash": "ff066a7193f0b4cb2e62f87171a63dc30be42b4a"
+          }
+        },
+        {
+          "client_id": "71692539830-rtqktoooekrj7ts7segbvf5rlgo1je35.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSXV6JYsLvGYw051bO4t6KVas1Ge-Laaw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "71692539830-rtqktoooekrj7ts7segbvf5rlgo1je35.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
