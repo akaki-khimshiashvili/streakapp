@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'home_screen.dart';
 import 'profile_screen.dart';
+import 'activity/create_activity_sheet.dart';
 
 class MainInterface extends StatefulWidget {
   const MainInterface({super.key});
@@ -46,7 +47,18 @@ class _MainInterfaceState extends State<MainInterface> {
       floatingActionButton: Container(
         margin: const EdgeInsets.only(top: 24),
         child: FloatingActionButton(
-          onPressed: () {},
+          onPressed: () async {
+            final created = await showModalBottomSheet<bool>(
+              context: context,
+              isScrollControlled: true,
+              backgroundColor: Colors.transparent,
+              builder: (_) => const CreateActivitySheet(),
+            );
+            if (created == true) {
+              // Optionally trigger a HomeScreen refresh here
+              // e.g. via a GlobalKey or provider setState
+            }
+          },
           backgroundColor: activeColor,
           shape: const CircleBorder(),
           elevation: 4,
